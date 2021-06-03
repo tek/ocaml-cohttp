@@ -13,10 +13,10 @@ http_archive(
 
 http_archive(
     name = "obazl_rules_ocaml",
-    sha256 = "bb81f3f61adbb8a732e662586f81aa4a11173f5a75d3158589fd406364f0e63c",
-    strip_prefix = "rules_ocaml-66f50d592728809d4d54aa4b081768023806a4f8",
+    sha256 = "ae8dede0facda7b7915097c382c70e853c6563b793ead2220d703572a2be2b95",
+    strip_prefix = "rules_ocaml-a9f16f7267bc97f7d68e9593565d2fee787b28fb",
     urls = [
-        "https://github.com/tek/rules_ocaml/archive/66f50d592728809d4d54aa4b081768023806a4f8.tar.gz",
+        "https://github.com/tek/rules_ocaml/archive/a9f16f7267bc97f7d68e9593565d2fee787b28fb.tar.gz",
     ],
 )
 

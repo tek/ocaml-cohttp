@@ -1,0 +1,23 @@
+load(
+    "@obazl_rules_ocaml//ocaml:rules.bzl",
+    "ocaml_executable",
+    "ocaml_module",
+)
+
+ocaml_module(
+    name = "generate",
+    deps_opam = ["jsonm"],
+    struct = "generate.ml",
+)
+
+ocaml_executable(
+    name = "generate_codes",
+    main = "generate",
+    visibility = ["//visibility:public"],
+)
+
+filegroup(
+    name = "codes",
+    srcs = glob(["codes/*"]),
+    visibility = ["//visibility:public"],
+)

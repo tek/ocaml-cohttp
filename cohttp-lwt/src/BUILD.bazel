@@ -1,0 +1,23 @@
+load("//:bzl/library.bzl", "lib", "mod", "sig")
+
+lib(
+    name = "lib-cohttp-lwt",
+    deps_opam = [
+        "lwt",
+        "logs",
+        "logs.lwt",
+    ],
+    modules = dict(
+        body = sig(),
+        client = sig(":s", ":make"),
+        cohttp_lwt = mod(":s", ":client", "server"),
+        make = mod(":s"),
+        server = sig(":s", ":make"),
+        s = mod(":body"),
+        string_io = sig(),
+    ),
+    deps = [
+        "//cohttp/src:#Cohttp",
+    ],
+    ppx = True,
+)
