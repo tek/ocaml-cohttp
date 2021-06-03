@@ -29,6 +29,15 @@ http_archive(
     ],
 )
 
+http_archive(
+    name = "conduit",
+    sha256 = "9e332c0ba12f7e676f6f0f60034020fb1bd42681d7ea78c27c4192aa39b3ba68",
+    strip_prefix = "ocaml-conduit-14cf5e1ffcaab6842157de1847e243ced4c98a0c",
+    urls = [
+        "https://github.com/tek/ocaml-conduit/archive/14cf5e1ffcaab6842157de1847e243ced4c98a0c.tar.gz",
+    ],
+)
+
 load("@obazl_rules_ocaml//ocaml:bootstrap.bzl", "ocaml_configure")
 load("//:bzl/opam.bzl", "opam")
 
