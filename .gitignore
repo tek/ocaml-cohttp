@@ -4,3 +4,8 @@ _build/
 .merlin
 _opam/
 node_modules
+/bazel/
+/bazel-bin
+/bazel-out
+/bazel-testlogs
+/bazel-ocaml-cohttp

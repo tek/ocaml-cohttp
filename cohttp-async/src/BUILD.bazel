@@ -1,0 +1,28 @@
+load("//:bzl/library.bzl", "lib", "mod", "sig")
+
+lib(
+    name = "lib-cohttp-async",
+    deps_opam = [
+        "logs.fmt",
+        "base",
+        "fmt",
+        "async_unix",
+        "async_kernel",
+        "uri",
+        "uri.services",
+        "uri-sexp",
+        "ipaddr.unix",
+        "conduit-async",
+        "magic-mime",
+        "cohttp",
+    ],
+    modules = dict(
+        body = sig(deps = [":body_raw"]),
+        body_raw = mod(),
+        client = mod(deps = [":io", ":body"]),
+        io = mod(),
+        request = mod(),
+        response = mod(),
+        server = mod(deps = [":io", ":body"]),
+    ),
+)
