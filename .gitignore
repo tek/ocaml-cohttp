@@ -9,3 +9,4 @@ node_modules
 /bazel-out
 /bazel-testlogs
 /bazel-ocaml-cohttp
+.opam

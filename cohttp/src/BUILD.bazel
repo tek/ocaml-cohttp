@@ -1,6 +1,6 @@
 load("@bazel_skylib//rules:write_file.bzl", "write_file")
 load("@obazl_rules_ocaml//ocaml:rules.bzl", "ocaml_yacc", "ocaml_lex")
-load("//:bzl/library.bzl", "lib", "mod", "sig")
+load("@obazl_rules_ocaml//dsl:library.bzl", "lib", "mod", "sig")
 
 ocaml_yacc(name = "accept_parser_ml", src = "accept_parser.mly")
 ocaml_lex(name = "accept_lexer_ml", src = "accept_lexer.mll")
@@ -20,37 +20,19 @@ genrule(
 )
 
 lib(
-    name = "lib-cohttp-internal",
+    name = "cohttp-internal",
     deps_opam = [
         "re",
         "stringext",
         "sexplib0",
         "bytes",
         "base64",
-        "ppx_sexp_conv",
     ],
     modules = dict(
         accept = sig(":accept_types", ":accept_parser", ":accept_lexer"),
         accept_types = mod(),
         accept_parser = mod(":accept_types", mod = ":accept_parser_ml"),
         accept_lexer = mod(":accept_types", ":accept_parser", mod = ":accept_lexer_ml"),
-        # auth = sig(),
-        # body = sig(":s"),
-        # code = sig(),
-        # cohttp = mod(":accept", ":auth", ":body", ":connection", ":cookie", ":request", ":response", ":path"),
-        # conf = mod(),
-        # connection = sig(),
-        # cookie = sig(":header"),
-        # header_io = sig(":s", ":transfer_io"),
-        # header = sig(":accept", ":transfer", ":auth", ":link", ":conf"),
-        # link = sig(),
-        # path = sig(),
-        # request = sig(":s", ":header_io"),
-        # response = sig(":s", ":header_io"),
-        # s = mod(":transfer", ":header", ":code"),
-        # string_io = sig(":s"),
-        # transfer_io = sig(":transfer", ":s"),
-        # transfer = sig(),
     ),
     opts = [
         "-w",
@@ -60,18 +42,18 @@ lib(
         "@uri//lib:lib-uri",
         "@uri//lib_sexp:lib-uri-sexp",
     ],
-    ppx = True,
+    ppx = dict(deps = ["ppx_sexp_conv"]),
+    ns = False,
 )
 
 lib(
-    name = "#Cohttp",
+    name = "cohttp",
     deps_opam = [
         "re",
         "stringext",
         "sexplib0",
         "bytes",
         "base64",
-        "ppx_sexp_conv",
     ],
     modules = dict(
         auth = sig(),
@@ -101,6 +83,5 @@ lib(
         "@uri//lib:lib-uri",
         "@uri//lib_sexp:lib-uri-sexp",
     ],
-    ppx = True,
-    ns = True,
+    ppx = dict(deps = ["ppx_sexp_conv"]),
 )

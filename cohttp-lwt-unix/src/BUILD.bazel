@@ -1,0 +1,28 @@
+load("@obazl_rules_ocaml//dsl:library.bzl", "lib", "mod", "sig")
+
+lib(
+    name = "cohttp-lwt-unix",
+    deps_opam = [
+        "fmt",
+        "logs",
+        "logs.lwt",
+        "magic-mime",
+        "lwt.unix",
+        "logs.fmt",
+    ],
+    modules = dict(
+        client = sig(":net"),
+        cohttp_lwt_unix = mod(":io", "client"),
+        debug = sig(),
+        io = sig(),
+        net = sig(":io"),
+        server = sig(":io", ":net"),
+    ),
+    deps = [
+        "//cohttp/src:#Cohttp",
+        "//cohttp-lwt/src:#Cohttp_lwt",
+        "@conduit//src/conduit-lwt:lib-conduit-lwt",
+        "@conduit//src/conduit-lwt-unix:lib-conduit-lwt-unix",
+    ],
+    ppx = dict(deps = ["ppx_sexp_conv"]),
+)

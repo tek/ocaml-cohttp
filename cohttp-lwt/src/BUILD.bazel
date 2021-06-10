@@ -1,7 +1,7 @@
-load("//:bzl/library.bzl", "lib", "mod", "sig")
+load("@obazl_rules_ocaml//dsl:library.bzl", "lib", "mod", "sig")
 
 lib(
-    name = "lib-cohttp-lwt",
+    name = "cohttp-lwt",
     deps_opam = [
         "lwt",
         "logs",
@@ -19,5 +19,5 @@ lib(
     deps = [
         "//cohttp/src:#Cohttp",
     ],
-    ppx = True,
+    # ppx = dict(deps = ["ppx_sexp_conv"]),
 )
