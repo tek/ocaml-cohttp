@@ -12,7 +12,7 @@ lib(
     ],
     modules = dict(
         client = sig(":net"),
-        cohttp_lwt_unix = mod(":io", "client"),
+        cohttp_lwt_unix = mod(":io", ":client", ":server", ":debug"),
         debug = sig(),
         io = sig(),
         net = sig(":io"),

@@ -10,7 +10,7 @@ lib(
     modules = dict(
         body = sig(),
         client = sig(":s", ":make"),
-        cohttp_lwt = mod(":s", ":client", "server"),
+        cohttp_lwt = mod(":s", ":client", ":server"),
         make = mod(":s"),
         server = sig(":s", ":make"),
         s = mod(":body"),
