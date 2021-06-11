@@ -1,0 +1,15 @@
+load("@obazl_rules_ocaml//dsl:library.bzl", "lib", "mod", "sig")
+
+lib(
+    name = "cohttp-test",
+    deps_opam = [
+        "oUnit",
+    ],
+    modules = dict(
+        cohttp_test = sig(),
+    ),
+    deps = [
+        "//cohttp/src:#Cohttp",
+    ],
+    ppx_deps = True,
+)

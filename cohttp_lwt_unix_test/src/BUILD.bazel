@@ -1,0 +1,18 @@
+load("@obazl_rules_ocaml//dsl:library.bzl", "lib", "mod", "sig")
+
+lib(
+    name = "cohttp-lwt-unix-test",
+    ns = False,
+    deps_opam = [
+        "oUnit",
+    ],
+    modules = dict(
+        cohttp_lwt_unix_test = sig(),
+    ),
+    deps = [
+        "//cohttp_test/src:lib-cohttp-test",
+        "//cohttp-lwt-unix/src:lib-cohttp-lwt-unix",
+        "@conduit//src/conduit-lwt:lib-conduit-lwt",
+    ],
+    ppx_deps = True,
+)

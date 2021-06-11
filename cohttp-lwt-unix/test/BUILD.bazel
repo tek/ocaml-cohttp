@@ -1,0 +1,17 @@
+load("@obazl_rules_ocaml//ocaml:rules.bzl", "ocaml_test", "ocaml_executable", "ppx_module")
+load("@obazl_rules_ocaml//dsl:library.bzl", "lib", "mod", "sig")
+
+ppx_module(
+    name = "test_body",
+    struct = ":test_body.ml",
+    deps_opam = ["lwt", "oUnit"],
+    deps = [
+        "//cohttp-lwt-unix/src:lib-cohttp-lwt-unix",
+        "//cohttp_lwt_unix_test/src:lib-cohttp-lwt-unix-test",
+    ]
+)
+
+ocaml_test(
+    name = "body",
+    main = "test_body",
+)

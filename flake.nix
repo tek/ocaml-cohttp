@@ -1,11 +1,7 @@
 {
   description = "OCaml: cohttp";
 
-  inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/fbfb79400a08bf754e32b4d4fc3f7d8f8055cf94;
-    flake-utils.url = github:numtide/flake-utils;
-    obazl.url = github:tek/rules_ocaml;
-  };
+  inputs.obazl.url = github:tek/rules_ocaml;
 
   outputs = { obazl, ... }:
   let
@@ -27,6 +23,7 @@
       "lwt"
       "lwt_ssl"
       "magic-mime"
+      "ounit"
       "ppx_deriving"
       "ppx_sexp_conv"
       "ppxlib"
