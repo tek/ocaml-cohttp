@@ -24,5 +24,5 @@ lib(
         "@conduit//src/conduit-lwt:lib-conduit-lwt",
         "@conduit//src/conduit-lwt-unix:lib-conduit-lwt-unix",
     ],
-    ppx = dict(deps = ["ppx_sexp_conv"]),
+    ppx = ["ppx_sexp_conv"],
 )

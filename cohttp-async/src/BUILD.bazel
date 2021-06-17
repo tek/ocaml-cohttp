@@ -2,7 +2,7 @@ load("@obazl_rules_ocaml//dsl:library.bzl", "lib", "mod", "sig")
 
 lib(
     name = "lib-cohttp-async",
-    ns = False,
+    wrapped = False,
     deps_opam = [
         "logs.fmt",
         "base",
@@ -23,8 +23,8 @@ lib(
     ),
     deps = [
         "//cohttp/src:lib-cohttp",
-        "@uri//lib:lib-uri",
-        "@uri//lib_sexp:lib-uri-sexp",
+        "@uri//lib:#Uri",
+        "@uri//lib_sexp:#Uri_sexp",
         "@uri//etc:services_short",
         "@conduit//src/conduit-async:lib-conduit-async",
     ],

@@ -19,5 +19,5 @@ lib(
     deps = [
         "//cohttp/src:#Cohttp",
     ],
-    ppx = dict(deps = ["ppx_sexp_conv"]),
+    ppx = ["ppx_sexp_conv"],
 )

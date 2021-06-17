@@ -5,9 +5,9 @@ def cohttp_deps():
     maybe(
         http_archive,
         "conduit",
-        sha256 = "fd13c5b5594f3dff3393eecefa1f2dd981d8519586243fe6625ff234ae88773e",
-        strip_prefix = "ocaml-conduit-6a3210bc88b26d8d1e75a7f75ec1a8cd5f6870b9",
+        sha256 = "83aeed3712c794529b11248e7dcb097a733536d9121c37551a96450e36eeb9c4",
+        strip_prefix = "ocaml-conduit-b428c79ea7cff3c09dd8bfd1435f18947f2e706f",
         urls = [
-            "https://github.com/tek/ocaml-conduit/archive/6a3210bc88b26d8d1e75a7f75ec1a8cd5f6870b9.tar.gz",
+            "https://github.com/tek/ocaml-conduit/archive/b428c79ea7cff3c09dd8bfd1435f18947f2e706f.tar.gz",
         ],
     )

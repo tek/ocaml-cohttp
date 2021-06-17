@@ -31,19 +31,19 @@ lib(
     modules = dict(
         accept = sig(":accept_types", ":accept_parser", ":accept_lexer"),
         accept_types = mod(),
-        accept_parser = mod(":accept_types", mod = ":accept_parser_ml"),
-        accept_lexer = mod(":accept_types", ":accept_parser", mod = ":accept_lexer_ml"),
+        accept_parser = mod(":accept_types", mod_src = ":accept_parser_ml"),
+        accept_lexer = mod(":accept_types", ":accept_parser", mod_src = ":accept_lexer_ml"),
     ),
     opts = [
         "-w",
         "-33",
     ],
     deps = [
-        "@uri//lib:lib-uri",
-        "@uri//lib_sexp:lib-uri-sexp",
+        "@uri//lib:#Uri",
+        "@uri//lib_sexp:#Uri_sexp",
     ],
-    ppx = dict(deps = ["ppx_sexp_conv"]),
-    ns = False,
+    ppx = ["ppx_sexp_conv"],
+    wrapped = False,
 )
 
 lib(
@@ -80,8 +80,8 @@ lib(
     ],
     deps = [
         ":lib-cohttp-internal",
-        "@uri//lib:lib-uri",
-        "@uri//lib_sexp:lib-uri-sexp",
+        "@uri//lib:#Uri",
+        "@uri//lib_sexp:#Uri_sexp",
     ],
-    ppx = dict(deps = ["ppx_sexp_conv"]),
+    ppx = ["ppx_sexp_conv"],
 )
